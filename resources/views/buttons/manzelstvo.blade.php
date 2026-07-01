@@ -17,7 +17,7 @@
 <header class="header">
     <nav class="nav container">
         <div class="nav_data">
-            <a href="/" class="navbar-logo">
+            <a href="{{url('welcome')}}" class="navbar-logo">
                 <img src="{{asset('Subory/logo-farnost-poprad-juh-biele.png')}}">
             </a>
         </div>
@@ -25,7 +25,7 @@
         <div class="nav_menu" id="nav-menu">
             <ul class="sidebar">
                 <li class="close" onclick=hideSidebar()><a><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
-                <li><a href="/" class="nav_link">Domov</a></li>
+                <li><a href="{{url('welcome')}}" class="nav_link">Domov</a></li>
                 <li><a href="{{url('kancelaria')}}" class="nav_link">Kancelária</a></li>
                 <li><a href="{{url('oznamy2')}}" class="nav_link">Archív oznamov</a></li>
                 <li class="dropdown_item">
@@ -88,7 +88,7 @@
         </div>
         <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
-                <li class="hideOnMobile"><a href="/" class="nav_link">Domov</a></li>
+                <li class="hideOnMobile"><a href="{{url('welcome')}}" class="nav_link">Domov</a></li>
                 <li class="hideOnMobile"><a href="{{url('kancelaria')}}" class="nav_link">Kancelária</a></li>
                 <li class="hideOnMobile"><a href="{{url('oznamy2')}}" class="nav_link">Archív oznamov</a></li>
                 <li class="dropdown_item hideOnMobile">
@@ -170,12 +170,12 @@
         <br>
         Snúbenci musia absolvovať <b>prípravu</b> formou, ktorá je uvedená na stránke <a class="kancelaria" href="{{url('https://www.domanzelstva.sk/')}}">www.domanzelstva.sk</a>  – v našej diecéze sú <a class="kancelaria" href="{{url('https://www.domanzelstva.sk/spisska-dieceza')}}">tieto termíny</a> (aj na plagáte dolu) – alebo inú podľa dohody pri zahlásení <b>termínu sobáša</b>.
         <br>
-        Tu sú <a class="kancelaria" href="{{url('nauky')}}">termíny večerných náuk pre rok 2026</a> (spolu treba absolvovať 5 tém). Konajú sa spolu aj pre farnosť Poprad – mesto, a to v <b>Pastoračnom centre</b> na Nábreží Jána Pavla II. 438/15 (pod bývalou budovou Katolíckej univerzity) v <b>piatky o 19:30. Je potrebné sa na konkrétnu náuku vopred <a class="kancelaria" href="{{url('https://www.rkcpoprad.sk/snubenecke-nauky/')}}">prihlásiť</a> do štvrtku 12:00!!!</b>
+        Tu sú <a class="kancelaria" href="{{asset('Subory/piatkove-nauky.jpg')}}">termíny večerných náuk pre rok 2026</a> (spolu treba absolvovať 5 tém). Konajú sa spolu aj pre farnosť Poprad – mesto, a to v <b>Pastoračnom centre</b> na Nábreží Jána Pavla II. 438/15 (pod bývalou budovou Katolíckej univerzity) v <b>piatky o 19:30. Je potrebné sa na konkrétnu náuku vopred <a class="kancelaria" href="{{url('https://www.rkcpoprad.sk/snubenecke-nauky/')}}">prihlásiť</a> do štvrtku 12:00!!!</b>
         <br>
         <br>
         V Kostole sv. Cyrila a Metoda v Poprade na Juhu sobášime každú sobotu, okrem adventu a pôstu, v časoch od 13.00h do 16.00h.
     </p>
-    <img class="manzelstvo" src="Subory/manzelstvo.jpg">
+    <img class="manzelstvo" src="{{asset('Subory/manzelstvo.jpg')}}">
 </div>
 <section class="footer">
     <div class="social">

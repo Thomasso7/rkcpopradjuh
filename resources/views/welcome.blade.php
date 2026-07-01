@@ -17,7 +17,7 @@
     <header class="header">
         <nav class="nav container">
             <div class="nav_data">
-                <a href="/" class="navbar-logo">
+                <a href="{{url('welcome')}}" class="navbar-logo">
                     <img src="{{asset('Subory/logo-farnost-poprad-juh-biele.png')}}">
                 </a>
             </div>
@@ -25,7 +25,7 @@
             <div class="nav_menu" id="nav-menu">
                 <ul class="sidebar">
                     <li class="close" onclick=hideSidebar()><a><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
-                    <li><a href="/" class="nav_link">Domov</a></li>
+                    <li><a href="{{url('welcome')}}" class="nav_link">Domov</a></li>
                     <li><a href="{{url('kancelaria')}}" class="nav_link">Kancelária</a></li>
                     <li><a href="{{url('oznamy2')}}" class="nav_link">Archív oznamov</a></li>
                     <li class="dropdown_item">
@@ -88,7 +88,7 @@
             </div>
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
-                    <li class="hideOnMobile"><a href="/" class="nav_link">Domov</a></li>
+                    <li class="hideOnMobile"><a href="{{url('welcome')}}" class="nav_link">Domov</a></li>
                     <li class="hideOnMobile"><a href="{{url('kancelaria')}}" class="nav_link">Kancelária</a></li>
                     <li class="hideOnMobile"><a href="{{url('oznamy2')}}" class="nav_link">Archív oznamov</a></li>
                     <li class="dropdown_item hideOnMobile">
@@ -148,6 +148,7 @@
                     </li>
                     <li class="hideOnMobile"><a href="{{url('kontakt')}}" class="nav_link">Kontakt</a></li>
                     <li class="bar1" onclick=showSidebar()><a class="bar1"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+                    <li><a href="{{asset('login')}}"><img class="login" src="{{asset('Subory/user2.webp')}}"></a></li>
                 </ul>
             </div>
         </nav>
@@ -159,12 +160,26 @@
             </button>
         </a>
     </div>
-    <img class="images" src="{{asset('Subory/denFarnosti.jpg')}}">
-    <img class="images" src="{{asset('Subory/podakovanie.jpeg')}}">
-    <img class="images" src="{{asset('Subory/SMS.jpeg')}}">
-    <img class="images" src="{{asset('Subory/dane.jpeg')}}">
-    <img class="images" src="{{asset('Subory/Den-farnosti-plagat.png')}}">
-    <img class="images" src="{{asset('Subory/Slavnost.jpg')}}">
+    @auth()
+        @if(\Illuminate\Support\Facades\Auth::user()->usertype == 'admin')
+        <a href="{{url('pridaj_aktualitu')}}">
+            <button class="addbutton">
+                Pridaj aktualitu
+            </button>
+        </a>
+        @endif
+    @endauth
+    @for($i = $images->count() - 1; $i >= 0; $i--)
+        @auth()
+            @if(\Illuminate\Support\Facades\Auth::user()->usertype == 'admin')
+            <a href="{{url('deleteActuality', $images[$i]->id)}}"><button class="deletebtn">
+                    Zmaž
+                </button>
+            </a>
+           @endif
+        @endauth
+        <img class="images" src="{{asset('Subory/' . $images[$i]->image)}}">
+    @endfor
     <section class="footer">
         <div class="social">
             <a href="{{url('https://www.instagram.com/rkc_popradjuh/')}}"><i class="fab fa-instagram"></i></a>

@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ButtonController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ButtonController::class, 'welcome'])->name('welcome');
+Route::get('welcome', [ButtonController::class,'welcome'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,6 +30,10 @@ Route::get('sviatosti', [ButtonController::class, 'sviatosti'])->name('sviatosti
 Route::get('knazi', [ButtonController::class, 'knazi'])->name('knazi');
 Route::get('oznamy', [ButtonController::class, 'oznamy'])->name('oznamy');
 Route::get('oznamy2', [ButtonController::class, 'oznamy2'])->name('oznamy2');
+Route::get('pridaj_aktualitu', [AdminController::class, 'pridajAktualitu'])->name('pridaj_aktualitu');
+Route::post('potvrdAktualitu',[AdminController::class, 'potvrdAktualitu'])->middleware('auth');
+Route::get('deleteActuality/{id}', [AdminController::class, 'zmazAktualitu'])->middleware('auth')->name('deleteActuality');
+
 
 
 require __DIR__.'/auth.php';

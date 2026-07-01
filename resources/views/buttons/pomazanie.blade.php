@@ -17,7 +17,7 @@
 <header class="header">
     <nav class="nav container">
         <div class="nav_data">
-            <a href="/" class="navbar-logo">
+            <a href="{{url('welcome')}}" class="navbar-logo">
                 <img src="{{asset('Subory/logo-farnost-poprad-juh-biele.png')}}">
             </a>
         </div>
@@ -25,7 +25,7 @@
         <div class="nav_menu" id="nav-menu">
             <ul class="sidebar">
                 <li class="close" onclick=hideSidebar()><a><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
-                <li><a href="/" class="nav_link">Domov</a></li>
+                <li><a href="{{url('welcome')}}" class="nav_link">Domov</a></li>
                 <li><a href="{{url('kancelaria')}}" class="nav_link">Kancelária</a></li>
                 <li><a href="{{url('oznamy2')}}" class="nav_link">Archív oznamov</a></li>
                 <li class="dropdown_item">
@@ -88,7 +88,7 @@
         </div>
         <div class="nav_menu" id="nav-menu">
             <ul class="nav_list">
-                <li class="hideOnMobile"><a href="/" class="nav_link">Domov</a></li>
+                <li class="hideOnMobile"><a href="{{url('welcome')}}" class="nav_link">Domov</a></li>
                 <li class="hideOnMobile"><a href="{{url('kancelaria')}}" class="nav_link">Kancelária</a></li>
                 <li class="hideOnMobile"><a href="{{url('oznamy2')}}" class="nav_link">Archív oznamov</a></li>
                 <li class="dropdown_item hideOnMobile">
@@ -163,6 +163,8 @@
         <b>V kostole</b> sv. Cyrila a Metoda v Poprade na Juhu na požiadanie <b>po sv. omši.</b>
         <br>
         <b>Doma</b> na Starom resp. Novom Juhu po dohode s kňazom.
+        <br>
+        <br>
         <br>
         <br>
         <br>

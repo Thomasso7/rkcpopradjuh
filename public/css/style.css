@@ -185,6 +185,7 @@ img {
 .images {
     margin-top: 200px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .nauky {
@@ -456,13 +457,60 @@ header img {
 }
 
 .login {
-    width: 40px;
+    width: 30px;
     cursor: pointer;
-    margin: 85px;
+}
+
+.addbutton {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    width: 80px;
+    color: white;
+    background-color: #1a202c;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.obrazok {
+    color: white;
+}
+
+.itemy {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.deletebtn {
+    border-width: 1px;
+    background-color: transparent;
+    border-radius: 4px;
+    border-color: #df1d1d;
+    border-style: solid;
+    color: #df1d1d;
+    height: 40px;
+    width: 80px;
+    margin: 250px;
+    margin-top: 190px;
+    position: absolute;
+}
+
+.deletebtn:hover {
+    background-color: #df1d1d;
+    color: white;
 }
 
 
 @media (max-width: 1000px) {
+    .deletebtn {
+        margin: 50px;
+        margin-top: 150px;
+    }
     .hideOnMobile {
         display: none;
     }
@@ -562,6 +610,12 @@ header img {
         margin-right: 50px;
     }
 
+    .sidebar .dropdown_menu .dropdown_link {
+        color: white;
+        background-color: black;
+        padding: .5rem;
+    }
+
     .navbar-toggle.active .bar:nth-child(2) {
         transform: translateY(0.5px) rotate(45deg);
     }
@@ -576,6 +630,9 @@ header img {
 }
 
 @media (max-width: 500px) {
+    .addbutton {
+        margin-top: 60px;
+    }
     .sidebar .dropdown_menu .dropdown_link {
         color: white;
         background-color: black;
@@ -630,5 +687,9 @@ header img {
     .table-container {
         justify-content: center;
         width: 300px;
+    }
+
+    .login {
+        margin-left: -50px;
     }
 }

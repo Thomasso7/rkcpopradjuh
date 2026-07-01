@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Aktualita;
 use Illuminate\Http\Request;
 
 class ButtonController extends Controller
 {
+    public function welcome()
+    {
+        $images = Aktualita::all();
+        return view('welcome', compact('images'));
+    }
     public function kancelaria()
     {
         return view('buttons.kancelaria');
