@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Aktualita;
+use App\Models\Oznamy;
+use App\Models\Oznamypdf;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ButtonController extends Controller
 {
     public function welcome()
     {
-        $images = Aktualita::all();
+        $images = DB::table("aktualitas")->orderByDesc("id")->paginate(10);
         return view('welcome', compact('images'));
     }
     public function kancelaria()
@@ -35,7 +39,8 @@ class ButtonController extends Controller
 
     public function oznamy()
     {
-        return view('buttons.oznamy');
+        $oznamy = Oznamy::all();
+        return view('buttons.oznamy', compact('oznamy'));
     }
 
     public function krst()
@@ -78,13 +83,9 @@ class ButtonController extends Controller
         return view('buttons.knazi');
     }
 
-    public function nauky()
-    {
-        return view('buttons.nauky');
-    }
-
     public function oznamy2()
     {
-        return view('buttons.oznamy2');
+        $oznamy = DB::table('oznamypdfs')->orderByDesc("id")->paginate(15);
+        return view('buttons.oznamy2', compact('oznamy'));
     }
 }

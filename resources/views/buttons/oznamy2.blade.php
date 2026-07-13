@@ -92,7 +92,7 @@
                 <li class="hideOnMobile"><a href="{{url('kancelaria')}}" class="nav_link">Kancelária</a></li>
                 <li class="hideOnMobile"><a href="{{url('oznamy2')}}" class="nav_link">Archív oznamov</a></li>
                 <li class="dropdown_item hideOnMobile">
-                    <div class="nav_link">
+                    <div onclick=showAndHideDropdown() class="nav_link">
                         Sviatosti<i class="ri-arrow-down-s-line dropdown_arrow"></i>
                     </div>
                     <ul class="dropdown_menu">
@@ -132,7 +132,7 @@
                     </ul>
                 </li>
                 <li class="dropdown_item hideOnMobile">
-                    <div class="nav_link">
+                    <div onclick=showAndHideDropdown() class="nav_link">
                         Farnosť<i class="ri-arrow-down-s-line dropdown_arrow"></i>
                     </div>
                     <ul class="dropdown_menu">
@@ -148,6 +148,7 @@
                 </li>
                 <li class="hideOnMobile"><a href="{{url('kontakt')}}" class="nav_link">Kontakt</a></li>
                 <li class="bar1" onclick=showSidebar()><a class="bar1"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+                <li><a href="{{asset('login')}}"><img class="login" src="{{asset('Subory/user2.webp')}}"></a></li>
             </ul>
         </div>
     </nav>
@@ -163,40 +164,34 @@
 <br>
 <br>
 <br>
+@auth()
+    @if(\Illuminate\Support\Facades\Auth::user()->usertype == 'admin')
+        <a href="{{url('pridaj_oznamypdf')}}">
+            <button class="addbutton">Pridaj oznamy</button>
+        </a>
+    @endif
+@endauth
+@foreach($oznamy as $oznam)
+    @auth()
+        @if(\Illuminate\Support\Facades\Auth::user()->usertype == 'admin')
+    <a href="{{url('deleteAnnouncementPdf', $oznam->id)}}">
+        <button class="deletebtn pdf">Zmaž</button>
+    </a>
+        @endif
+    @endauth
+    <a href="{{asset('Subory/' . $oznam->file)}}">
+        <h4 class="podtext">{{$oznam->text}}</h4>
+    </a>
+@endforeach
 <br>
-<a href="Subory/Oznamy3.pdf">
-    <h4 class="podtext">Program bohoslužieb 7.6.2026</h4>
-</a>
-<a href="Subory/Oznamy4.pdf">
-    <h4 class="podtext">Program bohoslužieb 31.5.2026</h4>
-</a>
-<a href="Subory/Oznamy5.pdf">
-    <h4 class="podtext">Program bohoslužieb 24.5.2026</h4>
-</a>
-<a href="Subory/Oznamy6.pdf">
-    <h4 class="podtext">Program bohoslužieb 17.5.2026</h4>
-</a>
-<a href="Subory/Oznamy7.pdf">
-    <h4 class="podtext">Program bohoslužieb 10.5.2026</h4>
-</a>
-<a href="Subory/Oznamy8.pdf">
-    <h4 class="podtext">Program bohoslužieb 3.5.2026</h4>
-</a>
-<a href="Subory/Oznamy2.pdf">
-    <h4 class="podtext">Program bohoslužieb 26.4.2026</h4>
-</a>
-<a href="Subory/Oznamy9.pdf">
-    <h4 class="podtext">Program bohoslužieb 19.4.2026</h4>
-</a>
-<a href="Subory/Oznamy10.pdf">
-    <h4 class="podtext">Program bohoslužieb 12.4.2026</h4>
-</a>
-<a href="Subory/Oznamy11.pdf">
-    <h4 class="podtext">Program bohoslužieb 5.4.2026</h4>
-</a>
-<a href="Subory/Oznamy12.pdf">
-    <h4 class="podtext">Program bohoslužieb 29.3.2026</h4>
-</a>
+<br>
+<br>
+<br>
+<br>
+<div class="pagination">
+    {{$oznamy->onEachSide(1)->links()}}
+</div>
+<br>
 <br>
 <br>
 <section class="footer">

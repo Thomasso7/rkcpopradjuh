@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="itemy">
-    <form action="{{url('potvrdAktualitu')}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('potvrdOznam')}}" method="post" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
             @foreach($errors->all() as $error)
@@ -26,7 +26,7 @@
             <label class="obrazok">Obrázok:</label>
             <input class="inputs obrazok" type="file" name="image" required>
         </div>
-    <button class="addbutton" type="submit">Pridaj obrázok</button>
+        <button class="addbutton" type="submit">Pridaj oznam</button>
     </form>
 </div>
 </body>

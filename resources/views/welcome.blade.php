@@ -15,7 +15,7 @@
 </head>
 <body>
     <header class="header">
-        <nav class="nav container">
+        <nav class="nav_container">
             <div class="nav_data">
                 <a href="{{url('welcome')}}" class="navbar-logo">
                     <img src="{{asset('Subory/logo-farnost-poprad-juh-biele.png')}}">
@@ -127,7 +127,7 @@
                         </ul>
                         <ul class="dropdown_menu">
                             <li>
-                                <a href="{{url('sviatosti')}}" class="dropdown_link">Sviatosti<br> dospelých</a>
+                                <a href="{{url('sviatosti')}}" class="dropdown_link">Sviatosti<br>dospelých<br></a>
                             </li>
                         </ul>
                     </li>
@@ -169,17 +169,20 @@
         </a>
         @endif
     @endauth
-    @for($i = $images->count() - 1; $i >= 0; $i--)
+    @foreach($images as $image)
         @auth()
             @if(\Illuminate\Support\Facades\Auth::user()->usertype == 'admin')
-            <a href="{{url('deleteActuality', $images[$i]->id)}}"><button class="deletebtn">
+            <a href="{{url('deleteActuality', $image->id)}}"><button class="deletebtn">
                     Zmaž
                 </button>
             </a>
            @endif
         @endauth
-        <img class="images" src="{{asset('Subory/' . $images[$i]->image)}}">
-    @endfor
+        <a href={{asset('Subory/' . $image->image)}}>
+            <img class="images" src="{{asset('Subory/' . $image->image)}}">
+        </a>
+    @endforeach
+    {{$images->onEachSide(1)->links()}}
     <section class="footer">
         <div class="social">
             <a href="{{url('https://www.instagram.com/rkc_popradjuh/')}}"><i class="fab fa-instagram"></i></a>

@@ -148,12 +148,31 @@
                 </li>
                 <li class="hideOnMobile"><a href="{{url('kontakt')}}" class="nav_link">Kontakt</a></li>
                 <li class="bar1" onclick=showSidebar()><a class="bar1"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+                <li><a href="{{asset('login')}}"><img class="login" src="{{asset('Subory/user2.webp')}}"></a></li>
             </ul>
         </div>
     </nav>
 </header>
-<img class="images" src="{{asset('Subory/Oznamy3.jpeg')}}">
-<img class="images" src="{{asset('Subory/Oznamy4.jpeg')}}">
+@auth()
+    @if(\Illuminate\Support\Facades\Auth::user()->usertype == 'admin')
+        <a href="{{url('pridaj_oznam')}}">
+            <button class="addbutton">Pridaj oznam</button>
+        </a>
+    @endif
+@endauth
+@foreach($oznamy as $oznam)
+    @auth()
+        @if(\Illuminate\Support\Facades\Auth::user()->usertype == 'admin')
+            <a href="{{url('deleteAnnouncement', $oznam->id)}}">
+                <button class="deletebtn">Zmaž</button>
+            </a>
+        @endif
+    @endauth
+    <a href="{{asset('Subory/' . $oznam->image)}}">
+        <img class="images" src="{{asset('Subory/' . $oznam->image)}}">
+    </a>
+@endforeach
+
 <section class="footer">
     <div class="social">
         <a href="{{url('https://www.instagram.com/rkc_popradjuh/')}}"><i class="fab fa-instagram"></i></a>

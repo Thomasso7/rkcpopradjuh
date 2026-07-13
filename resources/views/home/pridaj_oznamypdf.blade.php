@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="itemy">
-    <form action="{{url('potvrdAktualitu')}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('potvrdOznamyPdf')}}" method="post" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
             @foreach($errors->all() as $error)
@@ -23,10 +23,12 @@
             @endforeach
         @endif
         <div>
-            <label class="obrazok">Obrázok:</label>
-            <input class="inputs obrazok" type="file" name="image" required>
+            <label class="obrazok">Text:</label>
+            <input class="inputs" type="text" name="text" required>
+            <label class="obrazok">Súbor:</label>
+            <input class="inputs obrazok" type="file" name="file" required>
         </div>
-    <button class="addbutton" type="submit">Pridaj obrázok</button>
+        <button class="addbutton" type="submit">Pridaj oznamy</button>
     </form>
 </div>
 </body>
